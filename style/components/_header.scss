@@ -1,0 +1,69 @@
+@use "../base/vars" as *;
+@use "../helpers/placeholders";
+@use "../mixins/mixins";
+@use "../mixins/media-queries" as *;
+.header {
+  background-color: white;
+  box-shadow: 0 0 10px #ddd;
+  position: relative;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      @extend %flex-center;
+      color: $main-color;
+      text-decoration: none;
+
+      height: 72px;
+
+      font: {
+        weight: bold;
+        size: 26px;
+      }
+      @include sm {
+        height: 50px;
+      }
+    }
+    .main-nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      li > a {
+        @extend %flex-center;
+        position: relative;
+        text-decoration: none;
+        text-decoration: none;
+        padding: 0 30px;
+        height: 72px;
+
+        height: 40px;
+        color: black;
+        overflow: hidden;
+        transition: $main-transition;
+        // the blue line
+        &::before {
+          content: "";
+          @include mixins.overlay($main-color);
+          transition: $main-transition;
+          height: 4px;
+          left: -100%;
+        }
+        &:hover {
+          color: $alt-color;
+          &::before {
+            left: 0;
+          }
+        }
+        @include sm {
+          font-size: 18px;
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    @include sm {
+      flex-direction: column;
+    }
+  }
+}

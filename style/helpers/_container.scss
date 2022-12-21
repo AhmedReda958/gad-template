@@ -1,0 +1,35 @@
+@use "../mixins/media-queries" as *;
+$container-max-widths: (
+  xs: 100%,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+);
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include xs() {
+    width: map-get($container-max-widths, "xs");
+  }
+  @include sm() {
+    width: map-get($container-max-widths, "sm");
+  }
+  @include md() {
+    width: map-get($container-max-widths, "md");
+  }
+  @include lg() {
+    width: map-get($container-max-widths, "lg");
+  }
+  @include xl() {
+    width: map-get($container-max-widths, "xl");
+  }
+  @include xxl() {
+    width: map-get($container-max-widths, "xxl");
+  }
+}
