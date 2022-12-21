@@ -2,9 +2,10 @@
 @use "./base/normalize";
 
 @use "./base/base";
-
+@use "./components/components";
 @use "./helpers/container";
 
 @use "./components/header";
 
 @use "./components/landing";
+@use "./components/articles";
