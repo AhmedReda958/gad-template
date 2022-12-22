@@ -1,0 +1,48 @@
+@use "../base/vars" as *;
+@use "../helpers/animations";
+.gallary {
+  padding: $section-padding 0;
+  background-color: $section-background;
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    .box {
+      padding: 15px;
+      background-color: white;
+      box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%),
+        0px 2px 4px 0px rgb(0 0 0 / 12%);
+      .image {
+        overflow: hidden;
+        position: relative;
+        img {
+          transition: $main-transition;
+          width: 100%;
+        }
+        // overlay
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: rgba(#fff, 20%);
+          width: 0;
+          height: 0;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          z-index: 2;
+        }
+
+        // hovering
+        &:hover {
+          &::before {
+            animation: flashing 0.7s;
+          }
+          img {
+            transform: rotate(5deg) scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}

@@ -37,7 +37,6 @@
         padding: 0 30px;
         height: 72px;
 
-        height: 40px;
         color: black;
         overflow: hidden;
         transition: $main-transition;
@@ -56,6 +55,8 @@
           }
         }
         @include sm {
+          height: 40px;
+
           font-size: 18px;
           padding: 10px;
           font-size: 14px;

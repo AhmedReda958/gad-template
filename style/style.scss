@@ -1,6 +1,6 @@
 // normalize file
 @use "./base/normalize";
-
+@use "./helpers/animations";
 @use "./base/base";
 @use "./components/components";
 @use "./helpers/container";
@@ -9,3 +9,4 @@
 
 @use "./components/landing";
 @use "./components/articles";
+@use "./components/gallary";
