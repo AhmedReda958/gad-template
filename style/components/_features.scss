@@ -1,0 +1,104 @@
+@use "../base/vars" as *;
+@use "../mixins/mixins" as *;
+.features {
+  padding: $section-padding 0;
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    .box {
+      text-align: center;
+      border: 1px solid #ccc;
+      // image
+      .image-holder {
+        overflow: hidden;
+        position: relative;
+        img {
+          width: 100%;
+        }
+        &::before {
+          content: "";
+          @include overlay($main-color, 60%);
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          border-style: solid;
+          border-width: 0px 0px 170px 500px;
+          border-color: transparent transparent white transparent;
+          transition: $main-transition;
+        }
+      }
+      h2 {
+        font-size: 40px;
+        position: relative;
+        margin: auto;
+        width: fit-content;
+        &::after {
+          content: "";
+          width: calc(100% - 30px);
+          height: 5px;
+          position: absolute;
+          bottom: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: $main-color;
+        }
+      }
+      p {
+        padding: 25px;
+        margin: 30px 0;
+        line-height: 2;
+        color: #777;
+        font-size: 20px;
+      }
+      // button
+      a {
+        text-decoration: none;
+        display: block;
+        border: 3px solid transparent;
+        width: fit-content;
+        margin: 0 auto 30px;
+        font-weight: bold;
+        font-size: 22px;
+        padding: 10px 30px;
+        border-radius: 6px;
+        transition: $main-transition;
+      }
+      // on hover
+      &:hover {
+        .image-holder::after {
+          border-width: 170px 500px 170px 0;
+        }
+        a {
+          background-position: 0;
+          color: #fff;
+        }
+      }
+      // colored boxes
+      $counter: 1;
+      @each $color in $features-section-colors {
+        &-#{$counter} {
+          .image-holder {
+            &::before {
+              background-color: rgba($color, 60%);
+            }
+          }
+          h2::after {
+            background-color: $color;
+          }
+          a {
+            color: $color;
+            border-color: $color;
+            background: linear-gradient(to right, $color 50%, white 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+          }
+        }
+        $counter: $counter + 1;
+      }
+    }
+  }
+}
